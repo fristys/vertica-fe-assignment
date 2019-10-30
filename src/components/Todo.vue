@@ -95,6 +95,7 @@ export default Vue.extend({
     .category {
       position: relative;
       padding-left: 2rem;
+      color: $mediumGrey;
 
       &:before {
         display: block;
