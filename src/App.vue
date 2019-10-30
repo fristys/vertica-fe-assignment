@@ -1,29 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Header @searchTriggered="updateSearchTerm" />
+    <Todos :searchTerm="searchTerm" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+
+import Header from './components/Header.vue';
+import Todos from './components/Todos.vue';
 
 export default Vue.extend({
   name: 'app',
+
   components: {
-    HelloWorld
+    Header,
+    Todos
+  },
+
+  data() {
+    return {
+      searchTerm: ''
+    };
+  },
+
+  methods: {
+    updateSearchTerm(term: string) {
+      this.searchTerm = term;
+    }
   }
 });
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+@import './styles/variables';
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: $darkGrey;
+
+  margin: 1.5rem 1rem;
 }
 </style>
